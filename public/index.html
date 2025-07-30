@@ -1,151 +1,85 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Damx | Mod Store</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Damx TikTok Downloader</title>
   <style>
-    :root {
-      --primary: #00fff7;
-      --bg: #0a0a0a;
-      --text: #ffffff;
-      --accent: #ff00ff;
-    }
     body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-    .loading-screen {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background-color: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      animation: fadeOut 2s ease-in-out forwards;
-      animation-delay: 2s;
-    }
-    .loading-text {
-      font-size: 24px;
-      animation: moveText 3s linear infinite;
-      color: var(--primary);
-    }
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-    @keyframes moveText {
-      0% {transform: translateX(-100%);}
-      50% {transform: translateX(100%);}
-      100% {transform: translateX(-100%);}
-    }
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(90deg, #00fff7, #ff00ff);
-      background-size: 400% 400%;
-      animation: gradientShift 8s ease infinite;
-      color: #000;
-    }
-    @keyframes gradientShift {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-    .hero {
-      padding: 30px;
-      text-align: center;
-      animation: fadeIn 2s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    .btn-group {
-      margin-top: 30px;
-    }
-    .btn {
-      background-color: var(--accent);
-      border: none;
-      padding: 15px 30px;
-      margin: 10px;
-      font-size: 16px;
-      border-radius: 30px;
-      cursor: pointer;
+      background: #0a0a0a;
       color: #fff;
-      transition: 0.3s;
-      box-shadow: 0 0 10px var(--accent);
-    }
-    .btn:hover {
-      transform: scale(1.1);
-      background-color: #fff;
-      color: var(--accent);
-    }
-    .socials {
+      font-family: sans-serif;
       text-align: center;
-      margin: 40px 0;
+      padding: 40px;
     }
-    .socials a {
-      color: var(--primary);
-      font-size: 28px;
-      margin: 0 15px;
-      transition: 0.3s;
+    input, button {
+      padding: 12px;
+      width: 80%;
+      max-width: 500px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
     }
-    .socials a:hover {
-      color: var(--accent);
-      transform: scale(1.2);
+    button {
+      background-color: #00f7ff;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
     }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #111;
-      color: #888;
-      font-size: 14px;
+    .result {
+      margin-top: 20px;
+    }
+    video {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 20px;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
 
-  <div class="loading-screen">
-    <div class="loading-text">⚡ Damx Loading... ⚡</div>
-  </div>
+  <h1>Damx TikTok Downloader</h1>
+  <p>Masukkan link TikTok dan muat turun tanpa watermark!</p>
 
-  <header>
-    <h1>DAMX.MY.ID</h1>
-    <p>🔥 Store MOD / Script WhatsApp & Telegram 🔥</p>
-  </header>
+  <input type="text" id="tiktokUrl" placeholder="Paste link TikTok di sini...">
+  <br>
+  <button onclick="download()">Muat Turun</button>
 
-  <section class="hero">
-    <h2>Selamat Datang ke Damx Store</h2>
-    <p>Dapatkan semua script WhatsApp crash & Telegram bug terkini hanya di sini.</p>
+  <div class="result" id="result"></div>
 
-    <div class="btn-group">
-      <a href="produk.html" class="btn">Produk</a>
-      <a href="https://wa.me/60123456789" class="btn">WhatsApp</a>
-      <a href="https://t.me/damxofficial" class="btn">Telegram</a>
-      <a href="payment.html" class="btn">Pembayaran</a>
-    </div>
-  </section>
+  <script>
+    async function download() {
+      const url = document.getElementById("tiktokUrl").value.trim();
+      if (!url) {
+        alert("Sila masukkan link TikTok!");
+        return;
+      }
 
-  <div class="socials">
-    <a href="https://tiktok.com/@damx"><i class="fab fa-tiktok"></i></a>
-    <a href="https://youtube.com/@damx"><i class="fab fa-youtube"></i></a>
-    <a href="https://instagram.com/damx"><i class="fab fa-instagram"></i></a>
-  </div>
+      document.getElementById("result").innerHTML = "Loading...";
 
-  <footer>
-    From DAMX.MY.ID — Powered by DamxStore 🔥
-  </footer>
+      try {
+        const res = await fetch(`https://api.tikwm.com/video/info?url=${encodeURIComponent(url)}`);
+        const data = await res.json();
+
+        if (data && data.data && data.data.play) {
+          document.getElementById("result").innerHTML = `
+            <video controls autoplay muted loop src="${data.data.play}"></video>
+            <br>
+            <a href="${data.data.play}" download>
+              <button>Muat Turun Video</button>
+            </a>
+          `;
+        } else {
+          document.getElementById("result").innerHTML = "Gagal mendapatkan video.";
+        }
+      } catch (err) {
+        console.error(err);
+        document.getElementById("result").innerHTML = "Ralat berlaku semasa muat turun.";
+      }
+    }
+  </script>
 
 </body>
 </html>
