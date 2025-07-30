@@ -1,82 +1,108 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Damx TikTok Downloader</title>
   <style>
     body {
-      background: #0a0a0a;
-      color: #fff;
-      font-family: sans-serif;
+      background-color: #0f0f0f;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
       text-align: center;
-      padding: 40px;
     }
-    input, button {
-      padding: 12px;
-      width: 80%;
+    h1 {
+      color: #00fff7;
+    }
+    input[type="text"] {
+      width: 90%;
       max-width: 500px;
-      margin: 10px 0;
-      border-radius: 10px;
+      padding: 15px;
+      margin: 10px auto;
+      border-radius: 8px;
       border: none;
       font-size: 16px;
+      outline: none;
     }
     button {
-      background-color: #00f7ff;
-      color: black;
+      padding: 12px 25px;
+      background-color: #00fff7;
+      color: #000;
       font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #00e1d1;
     }
     .result {
-      margin-top: 20px;
+      margin-top: 30px;
     }
     video {
       width: 100%;
       max-width: 400px;
-      margin-top: 20px;
       border-radius: 10px;
+      margin-top: 15px;
+    }
+    .error {
+      color: #ff4444;
+      margin-top: 15px;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
-  <h1>Damx TikTok Downloader</h1>
-  <p>Masukkan link TikTok dan muat turun tanpa watermark!</p>
+  <h1>DAMX TikTok Downloader</h1>
+  <p>Muat turun video TikTok tanpa watermark secara percuma!</p>
 
-  <input type="text" id="tiktokUrl" placeholder="Paste link TikTok di sini...">
+  <input type="text" id="tiktokUrl" placeholder="Tampal link TikTok di sini..." />
   <br>
-  <button onclick="download()">Muat Turun</button>
+  <button onclick="getVideo()">Muat Turun</button>
 
   <div class="result" id="result"></div>
 
+  <footer>Powered by Damx | TikTok Downloader 2025</footer>
+
   <script>
-    async function download() {
-      const url = document.getElementById("tiktokUrl").value.trim();
-      if (!url) {
-        alert("Sila masukkan link TikTok!");
+    async function getVideo() {
+      const urlInput = document.getElementById('tiktokUrl').value.trim();
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '';
+
+      if (!urlInput) {
+        resultDiv.innerHTML = '<div class="error">⚠️ Sila masukkan pautan TikTok.</div>';
         return;
       }
 
-      document.getElementById("result").innerHTML = "Loading...";
+      resultDiv.innerHTML = '⏳ Memproses video...';
 
       try {
-        const res = await fetch(`https://api.tikwm.com/video/info?url=${encodeURIComponent(url)}`);
-        const data = await res.json();
+        const response = await fetch(`https://api.tikwm.com/video/info?url=${encodeURIComponent(urlInput)}&hd=1`);
+        const data = await response.json();
 
-        if (data && data.data && data.data.play) {
-          document.getElementById("result").innerHTML = `
-            <video controls autoplay muted loop src="${data.data.play}"></video>
+        if (data.code === 0 && data.data && data.data.play) {
+          resultDiv.innerHTML = `
+            <video src="${data.data.play}" controls loop muted></video>
             <br>
             <a href="${data.data.play}" download>
-              <button>Muat Turun Video</button>
+              <button>Muat Turun Video Tanpa Watermark</button>
             </a>
           `;
         } else {
-          document.getElementById("result").innerHTML = "Gagal mendapatkan video.";
+          resultDiv.innerHTML = '<div class="error">❌ Gagal mendapatkan video. Sila cuba lagi.</div>';
         }
-      } catch (err) {
-        console.error(err);
-        document.getElementById("result").innerHTML = "Ralat berlaku semasa muat turun.";
+      } catch (error) {
+        console.error(error);
+        resultDiv.innerHTML = '<div class="error">❌ Ralat sambungan atau API tidak berfungsi.</div>';
       }
     }
   </script>
