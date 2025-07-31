@@ -25,6 +25,44 @@
         }
 
         body {
+            <!-- ====== FORM LOGIN START ====== -->
+<div id="login-section" style="text-align: center; margin-top: 50px;">
+  <h2 style="color: cyan;">Login ke Panel Damx</h2>
+  <input type="text" id="username" placeholder="Username" style="padding: 10px; border-radius: 5px; border: none;"><br><br>
+  <input type="password" id="password" placeholder="Password" style="padding: 10px; border-radius: 5px; border: none;"><br><br>
+  <button onclick="checkLogin()" style="padding: 10px 20px; background-color: cyan; border: none; border-radius: 5px; font-weight: bold;">Login</button>
+  <p id="login-error" style="color: red; margin-top: 10px;"></p>
+</div>
+
+<!-- ====== PANEL (RAHSIA) ====== -->
+<div id="panel-section" style="display: none; text-align: center; margin-top: 50px;">
+  <h2 style="color: lime;">Selamat Datang ke Panel Damx</h2>
+  <p>Ini adalah kawasan rahsia khas untuk pengguna login sahaja!</p>
+  <button onclick="logout()" style="padding: 8px 16px; margin-top: 20px;">Logout</button>
+</div>
+
+<script>
+  function checkLogin() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const errorMsg = document.getElementById("login-error");
+
+    if (user === "damx" && pass === "12345") {
+      document.getElementById("login-section").style.display = "none";
+      document.getElementById("panel-section").style.display = "block";
+      errorMsg.textContent = "";
+    } else {
+      errorMsg.textContent = "Username atau Password salah!";
+    }
+  }
+
+  function logout() {
+    document.getElementById("login-section").style.display = "block";
+    document.getElementById("panel-section").style.display = "none";
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+  }
+</script>
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
