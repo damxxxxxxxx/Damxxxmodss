@@ -1,6 +1,5 @@
 :root {
-/* CSS THEME - Dark Neon Theme */ 
-    :root { --primary-color: #9c27b0;
+           --primary-color: #9c27b0;
            --primary-dark: #7b1fa2;
            --secondary-color: #673ab7;
            --accent-color: #ba68c8;
