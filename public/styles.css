@@ -1,12 +1,14 @@
 :root {
-    --primary-color: #a0d468;
-    --primary-dark: #8cc152;
-    --secondary-color: #48cfad;
-    --accent-color: #37bc9b;
-    --text-color: #434a54;
-    --light-bg: #f5f7fa;
+    --primary-color: #9c27b0;
+    --primary-dark: #7b1fa2;
+    --secondary-color: #673ab7;
+    --accent-color: #ba68c8;
+    --text-color: #e1bee7;
+    --dark-bg: #121212;
+    --darker-bg: #1e1e1e;
+    --card-bg: #2d2d2d;
     --white: #ffffff;
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     --transition: all 0.3s ease;
 }
 
@@ -18,20 +20,21 @@
 }
 
 body {
-    background-color: var(--light-bg);
+    background-color: var(--dark-bg);
     color: var(--text-color);
     overflow-x: hidden;
 }
 
 /* Header Styles */
 header {
-    background-color: var(--white);
+    background-color: var(--darker-bg);
     box-shadow: var(--shadow);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     padding: 15px 0;
+    border-bottom: 1px solid var(--primary-dark);
 }
 
 .navbar {
@@ -44,12 +47,12 @@ header {
 }
 
 .logo h1 {
-    color: var(--primary-dark);
+    color: var(--accent-color);
     font-size: 1.8rem;
 }
 
 .logo span {
-    color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .nav-links {
@@ -65,7 +68,7 @@ header {
 }
 
 .nav-links a:hover {
-    color: var(--primary-dark);
+    color: var(--accent-color);
 }
 
 .cart-icon {
@@ -77,14 +80,14 @@ header {
 }
 
 .cart-icon:hover {
-    color: var(--primary-dark);
+    color: var(--accent-color);
 }
 
 .cart-count {
     position: absolute;
     top: -10px;
     right: -10px;
-    background-color: var(--primary-dark);
+    background-color: var(--primary-color);
     color: white;
     border-radius: 50%;
     width: 20px;
@@ -116,7 +119,7 @@ header {
 .hero-content h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: var(--primary-dark);
+    color: var(--accent-color);
 }
 
 .hero-content p {
@@ -127,7 +130,7 @@ header {
 
 .btn {
     display: inline-block;
-    background-color: var(--primary-dark);
+    background-color: var(--primary-color);
     color: white;
     padding: 12px 25px;
     border-radius: 30px;
@@ -141,7 +144,7 @@ header {
 .btn:hover {
     background-color: var(--accent-color);
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .hero-image {
@@ -165,7 +168,7 @@ header {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 40px;
-    color: var(--primary-dark);
+    color: var(--accent-color);
 }
 
 .product-categories {
@@ -178,12 +181,13 @@ header {
 
 .category-btn {
     padding: 8px 20px;
-    background-color: var(--white);
-    border: 1px solid #ddd;
+    background-color: var(--card-bg);
+    border: 1px solid var(--primary-dark);
     border-radius: 30px;
     cursor: pointer;
     transition: var(--transition);
     font-weight: 500;
+    color: var(--text-color);
 }
 
 .category-btn:hover, .category-btn.active {
@@ -199,22 +203,24 @@ header {
 }
 
 .product-card {
-    background-color: var(--white);
+    background-color: var(--card-bg);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
     cursor: pointer;
+    border: 1px solid var(--primary-dark);
 }
 
 .product-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent-color);
 }
 
 .product-image {
     height: 180px;
-    background-color: #f0f0f0;
+    background-color: var(--darker-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -222,7 +228,7 @@ header {
 
 .product-image i {
     font-size: 3rem;
-    color: var(--primary-dark);
+    color: var(--accent-color);
 }
 
 .product-info {
@@ -231,7 +237,7 @@ header {
 
 .product-info h3 {
     margin-bottom: 10px;
-    color: var(--primary-dark);
+    color: var(--accent-color);
 }
 
 .product-info p {
@@ -242,13 +248,13 @@ header {
 
 .product-price {
     font-weight: bold;
-    color: var(--accent-color);
+    color: var(--primary-color);
     margin-bottom: 15px;
 }
 
 .view-btn {
     display: inline-block;
-    background-color: var(--primary-color);
+    background-color: var(--primary-dark);
     color: white;
     padding: 8px 15px;
     border-radius: 5px;
@@ -258,7 +264,7 @@ header {
 }
 
 .view-btn:hover {
-    background-color: var(--primary-dark);
+    background-color: var(--accent-color);
 }
 
 /* About Section */
@@ -267,16 +273,17 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
-    background-color: var(--white);
+    background-color: var(--card-bg);
     border-radius: 10px;
     box-shadow: var(--shadow);
     margin-bottom: 50px;
+    border: 1px solid var(--primary-dark);
 }
 
 .about h2 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: var(--primary-dark);
+    color: var(--accent-color);
 }
 
 .about p {
@@ -297,7 +304,7 @@ header {
 .telegram-btn {
     display: inline-flex;
     align-items: center;
-    background-color: #0088cc;
+    background-color: var(--primary-dark);
     color: white;
     padding: 10px 20px;
     border-radius: 30px;
@@ -312,9 +319,9 @@ header {
 }
 
 .telegram-btn:hover {
-    background-color: #0077b5;
+    background-color: var(--accent-color);
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Modal Styles */
@@ -325,13 +332,13 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 2000;
     overflow-y: auto;
 }
 
 .modal-content {
-    background-color: var(--white);
+    background-color: var(--card-bg);
     margin: 50px auto;
     padding: 30px;
     border-radius: 10px;
@@ -339,6 +346,7 @@ header {
     max-width: 600px;
     position: relative;
     animation: modalFadeIn 0.3s ease;
+    border: 1px solid var(--primary-dark);
 }
 
 @keyframes modalFadeIn {
@@ -363,11 +371,11 @@ header {
 }
 
 .close-modal:hover {
-    color: var(--primary-dark);
+    color: var(--accent-color);
 }
 
 .modal-product-details h2 {
-    color: var(--primary-dark);
+    color: var(--accent-color);
     margin-bottom: 20px;
 }
 
@@ -385,7 +393,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    border: 1px solid #ddd;
+    background-color: var(--darker-bg);
+    border: 1px solid var(--primary-dark);
     border-radius: 5px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -393,12 +402,12 @@ header {
 }
 
 .price-option:hover {
-    border-color: var(--primary-color);
+    border-color: var(--accent-color);
 }
 
 .price-option.selected {
-    background-color: rgba(160, 212, 104, 0.1);
-    border-color: var(--primary-color);
+    background-color: rgba(156, 39, 176, 0.2);
+    border-color: var(--accent-color);
 }
 
 .add-to-cart-btn {
@@ -415,12 +424,13 @@ header {
     width: 100%;
     max-width: 400px;
     height: 100%;
-    background-color: var(--white);
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    background-color: var(--darker-bg);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
     z-index: 1500;
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    border-left: 1px solid var(--primary-dark);
 }
 
 .cart-sidebar.open {
@@ -432,17 +442,18 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--primary-dark);
 }
 
 .close-cart {
     font-size: 1.5rem;
     cursor: pointer;
     transition: var(--transition);
+    color: var(--text-color);
 }
 
 .close-cart:hover {
-    color: var(--primary-dark);
+    color: var(--accent-color);
 }
 
 .cart-items {
@@ -456,7 +467,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--primary-dark);
 }
 
 .cart-item:last-child {
@@ -465,16 +476,17 @@ header {
 
 .cart-item-info h4 {
     margin-bottom: 5px;
+    color: var(--accent-color);
 }
 
 .cart-item-info p {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-color);
 }
 
 .cart-item-price {
     font-weight: bold;
-    color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .remove-item {
@@ -485,13 +497,14 @@ header {
 
 .cart-total {
     padding: 20px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--primary-dark);
     text-align: right;
 }
 
 .cart-total p {
     font-size: 1.2rem;
     margin-bottom: 15px;
+    color: var(--accent-color);
 }
 
 .checkout-btn {
@@ -507,12 +520,12 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 2500;
 }
 
 .payment-content {
-    background-color: var(--white);
+    background-color: var(--card-bg);
     margin: 50px auto;
     padding: 30px;
     border-radius: 10px;
@@ -520,6 +533,7 @@ header {
     max-width: 500px;
     position: relative;
     animation: modalFadeIn 0.3s ease;
+    border: 1px solid var(--primary-dark);
 }
 
 .close-payment {
@@ -533,7 +547,7 @@ header {
 }
 
 .close-payment:hover {
-    color: var(--primary-dark);
+    color: var(--accent-color);
 }
 
 .payment-options {
@@ -549,16 +563,18 @@ header {
     justify-content: center;
     gap: 10px;
     padding: 15px;
-    background-color: var(--light-bg);
-    border: none;
+    background-color: var(--darker-bg);
+    border: 1px solid var(--primary-dark);
     border-radius: 5px;
     cursor: pointer;
     transition: var(--transition);
     font-weight: 500;
+    color: var(--text-color);
 }
 
 .payment-btn:hover {
-    background-color: #e0e0e0;
+    background-color: rgba(156, 39, 176, 0.2);
+    border-color: var(--accent-color);
 }
 
 .payment-btn i {
@@ -568,9 +584,10 @@ header {
 .payment-instructions {
     margin-top: 30px;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: var(--darker-bg);
     border-radius: 5px;
     display: none;
+    border: 1px solid var(--primary-dark);
 }
 
 /* Floating Buttons */
@@ -590,7 +607,7 @@ header {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: var(--transition);
     display: flex;
     align-items: center;
@@ -616,7 +633,7 @@ header {
     justify-content: center;
     font-size: 1.8rem;
     text-decoration: none;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: var(--transition);
     z-index: 1000;
 }
@@ -671,4 +688,4 @@ header {
         width: 100%;
         max-width: 200px;
     }
-}
+        }
