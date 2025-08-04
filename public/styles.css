@@ -1,5 +1,6 @@
 :root {
-/* CSS THEME - Dark Neon Theme */ :root { --primary-color: #9c27b0; --primary-dark: #7b1fa2; --secondary-color: #673ab7; --accent-color: #ba68c8; --text-color: #e1bee7; --dark-bg: #121212; --darker-bg: #1e1e1e; --card-bg: #2d2d2d; --white: #ffffff; --shadow: 0 4px 15px rgba(0, 0, 0, 0.3); --transition: all 0.3s ease; }
+/* CSS THEME - Dark Neon Theme */ 
+    :root { --primary-color: #9c27b0; --primary-dark: #7b1fa2; --secondary-color: #673ab7; --accent-color: #ba68c8; --text-color: #e1bee7; --dark-bg: #121212; --darker-bg: #1e1e1e; --card-bg: #2d2d2d; --white: #ffffff; --shadow: 0 4px 15px rgba(0, 0, 0, 0.3); --transition: all 0.3s ease; }
 
 /* BASE & LAYOUT */
 
