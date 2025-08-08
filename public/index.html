@@ -1,127 +1,253 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAMX STORE - Premium Digital Products</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>⚠️ SYSTEM ALERT ⚠️</title>
+    <style>
+        /* LOADING SCREEN STYLES */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .shop-logo {
+            font-size: 3em;
+            color: #ff9900;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #ff9900;
+        }
+        #loading-bar {
+            width: 80%;
+            height: 20px;
+            background: #333;
+            margin: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #loading-progress {
+            height: 100%;
+            width: 0%;
+            background: #ff9900;
+            transition: width 0.3s;
+        }
+        #start-button {
+            padding: 15px 30px;
+            background: #ff9900;
+            color: black;
+            border: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 30px;
+            display: none;
+            border-radius: 5px;
+        }
+        .loading-text {
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        /* MAIN SCREEN STYLES (HIDDEN INITIALLY) */
+        #main-screen {
+            display: none;
+        }
+        body {
+            background: #000;
+            color: #ff0000;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            cursor: none;
+            user-select: none;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: flash 0.3s infinite;
+        }
+        @keyframes flash {
+            0%, 100% { background: #000; }
+            25% { background: #ff0000; }
+            50% { background: #000; }
+            75% { background: #990000; }
+        }
+        #gambar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid red;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 20px red;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 0 0 15px red;
+            animation: blink 0.5s infinite;
+            margin: 10px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        #countdown {
+            font-size: 1.8em;
+            color: #ffff00;
+            margin: 15px;
+            text-shadow: 0 0 10px yellow;
+        }
+        #password-box {
+            margin: 20px;
+        }
+        #password-input {
+            padding: 12px;
+            font-size: 1.2em;
+            background: #111;
+            color: #fff;
+            border: 2px solid red;
+            width: 250px;
+        }
+        #unlock-btn {
+            padding: 12px 30px;
+            background: red;
+            color: black;
+            border: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 0 0 15px red;
+        }
+        #error-msg {
+            color: yellow;
+            display: none;
+            font-size: 1.2em;
+            text-shadow: 0 0 5px yellow;
+        }
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            font-size: 0.7em;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header/Navbar -->
-    <header>
-        <div class="navbar">
-            <div class="logo">
-                <h1>DAMX <span>STORE</span></h1>
-            </div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#products">Products</a>
-                <a href="#about">About</a>
-            </div>
-            <div class="cart-icon">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count">0</span>
-            </div>
+    <!-- LOADING SCREEN (DAMX SHOP THEME) -->
+    <div id="loading-screen">
+        <div class="shop-logo">DAMX SHOP</div>
+        <p style="font-size: 1.5em;">Selamat Datang ke Damx Shop</p>
+        <p class="loading-text">Memuatkan sistem...</p>
+        <div id="loading-bar">
+            <div id="loading-progress"></div>
         </div>
-    </header>
+        <button id="start-button">MULAKAN</button>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Premium Digital Products</h1>
-            <p>Get the best scripts, panels, and tools for your needs</p>
-            <a href="#products" class="btn">Explore Products</a>
+    <!-- MAIN SCREEN (HIDDEN INITIALLY) -->
+    <div id="main-screen">
+        <img id="gambar" src="https://files.catbox.moe/ejubdm.jpg" alt="DAMX-DEV">
+        
+        <h1>💀HACKED BY DAMX-DEV💀</h1>
+        <p style="font-size: 1.3em;">All your files have to delete and encrpt</p>
+        
+        <div id="countdown">⏳ TIME REMAINING: <span id="time">05:00</span></div>
+        
+        <div id="password-box">
+            <input type="password" id="password-input" placeholder="ENTER DECRYPTION KEY...">
+            <button id="unlock-btn" onclick="checkPassword()">UNLOCK OR DIE</button>
         </div>
-        <div class="hero-image">
-            <img src="https://via.placeholder.com/500x300?text=DAMX+STORE" alt="DAMX Store Products">
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products" id="products">
-        <h2>Our Products</h2>
-        <div class="product-categories">
-            <button class="category-btn active" data-category="all">All Products</button>
-            <button class="category-btn" data-category="panel">Panel Data</button>
-            <button class="category-btn" data-category="script">Script Via Tele</button>
-            <button class="category-btn" data-category="wa">Script Via WA</button>
-            <button class="category-btn" data-category="murban">Murban 777</button>
-        </div>
-
-        <div class="product-grid">
-            <!-- Products will be dynamically inserted here by JavaScript -->
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <h2>About DAMX STORE</h2>
-        <p>We provide premium digital products with excellent support and updates.</p>
-        <div class="contact-info">
-            <h3>Contact Admin</h3>
-            <a href="https://t.me/ItmeDamx" class="telegram-btn" target="_blank">
-                <i class="fab fa-telegram"></i> Telegram
-            </a>
-        </div>
-    </section>
-
-    <!-- Product Modal -->
-    <div class="modal" id="productModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-product-details">
-                <!-- Product details will be inserted here by JavaScript -->
-            </div>
+        
+        <p id="error-msg">ACCESS DENIED! TRY AGAIN!</p>
+        
+        <div class="footer">
+            WARNING: Say good bye to your phone ☢︎ Damx-Dev
         </div>
     </div>
 
-    <!-- Cart Sidebar -->
-    <div class="cart-sidebar">
-        <div class="cart-header">
-            <h3>Your Cart</h3>
-            <span class="close-cart">&times;</span>
-        </div>
-        <div class="cart-items">
-            <!-- Cart items will be inserted here by JavaScript -->
-        </div>
-        <div class="cart-total">
-            <p>Total: RM <span id="cart-total-amount">0.00</span></p>
-            <button class="checkout-btn">Proceed to Payment</button>
-        </div>
-    </div>
+    <!-- AUDIO ELEMENT -->
+    <audio id="audio" src="https://files.catbox.moe/jv6k2g.mp4" preload="auto"></audio>
 
-    <!-- Payment Options Modal -->
-    <div class="payment-modal">
-        <div class="payment-content">
-            <span class="close-payment">&times;</span>
-            <h3>Select Payment Method</h3>
-            <div class="payment-options">
-                <button class="payment-btn" data-method="tng">
-                    <i class="fas fa-money-bill-wave"></i> Touch 'n Go
-                </button>
-                <button class="payment-btn" data-method="duitnow">
-                    <i class="fas fa-mobile-alt"></i> DuitNow
-                </button>
-            </div>
-            <div class="payment-instructions">
-                <!-- Payment instructions will be shown here -->
-            </div>
-        </div>
-    </div>
+    <script>
+        // LOADING SCREEN ANIMATION
+        const loadingProgress = document.getElementById('loading-progress');
+        const startButton = document.getElementById('start-button');
+        let progress = 0;
 
-    <!-- Floating Contact Button -->
-    <div class="floating-contact">
-        <button class="contact-btn">
-            <i class="fas fa-headset"></i>
-        </button>
-    </div>
+        const loadingInterval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(loadingInterval);
+                startButton.style.display = 'block';
+                document.querySelector('.loading-text').textContent = "Sedia untuk dimulakan!";
+            }
+            loadingProgress.style.width = progress + '%';
+        }, 300);
 
-    <!-- WhatsApp Contact Button -->
-    <a href="https://wa.me/yournumber" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+        // START BUTTON CLICK HANDLER
+        startButton.addEventListener('click', function() {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('main-screen').style.display = 'block';
+            document.getElementById('audio').play().catch(e => console.log("Audio play failed:", e));
+            startMainPrank();
+        });
 
-    <script src="script.js"></script>
+        // MAIN PRANK FUNCTIONS
+        function startMainPrank() {
+            // PASSWORD SYSTEM
+            const PASSWORD = "DAMX123";
+            let timeLeft = 5 * 60; // 5 minutes (change to 300*60 for 300 minutes)
+
+            function checkPassword() {
+                const input = document.getElementById("password-input").value;
+                if (input === PASSWORD) {
+                    alert("✅ DECRYPTION SUCCESSFUL! ");
+                    window.close();
+                } else {
+                    document.getElementById("error-msg").style.display = "block";
+                    document.getElementById("password-input").value = "";
+                }
+            }
+
+            // COUNTDOWN TIMER
+            function updateTimer() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById("time").textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                
+                if (timeLeft <= 0) {
+                    document.getElementById("countdown").innerHTML = "⌛️ TIME'S UP! DATA ERASED!";
+                } else {
+                    timeLeft--;
+                    setTimeout(updateTimer, 1000);
+                }
+            }
+            
+            // BLOCK RIGHT-CLICK & F12
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', e => {
+                if (e.key === "F12" || e.ctrlKey) e.preventDefault();
+            });
+
+            // START TIMER
+            updateTimer();
+            
+            // Attach the password check function to the button
+            document.getElementById('unlock-btn').onclick = checkPassword;
+        }
+    </script>
 </body>
-      </html>
+</html>
